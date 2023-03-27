@@ -1,0 +1,38 @@
+body {
+    background-color: #07000d;
+    color: #ffefcf;
+    font-family: sans-serif;
+}
+
+main {
+    text-align: center;
+}
+
+header, .intro {
+    text-align: center;
+}
+
+.intro {
+    display: inline-block;
+    border: 3px ridge #0099ff;
+    border-radius: 6px;
+    padding: 1vw;
+    font-size: 1vw;
+    background-color: #00091f;
+}
+
+.intro * {
+    border: none;
+}
+
+pre.sitename>code {
+    font-size: 1.4vw;
+    color: #ff9955;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+h1>pre.sitename>code {
+    letter-spacing: 0.4vw;
+    font-size: 2.4vw;
+    font-weight: normal;
+}
