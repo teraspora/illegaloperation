@@ -53,3 +53,32 @@ h1>pre.sitename {
 pre.skew {
     transform: rotate(-0.13rad);
 }
+
+.clock {
+    background-color: #121212;
+    position: absolute;
+    right: 6vw;
+    bottom: 6vh;
+    border: 2px solid #000;
+    border-radius: 50%;
+    width: 20vw;
+    height: 20vw;
+    place-content: center;
+}
+
+.clock-numeral {
+    position: absolute;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.2vw;
+    color: var(--clr-setoff);
+}
+
+/* #h3 {
+    left: 216px;
+    top: 216px;
+}
+
+#h9 {
+    left: -216px;
+    top: 216px;
+} */
