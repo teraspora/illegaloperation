@@ -1,6 +1,14 @@
+* {
+    --clr-bg: #07000d;
+    --clr-fg: #ffefcf;
+    --clr-spot: #ff9955;
+    --clr-setoff: #0099ff;
+    --clr-med-dark: #00091f;
+}
+
 body {
-    background-color: #07000d;
-    color: #ffefcf;
+    background-image: url("../media/img_10552.png");
+    color: var(--clr-fg);
     font-family: sans-serif;
 }
 
@@ -14,25 +22,30 @@ header, .intro {
 
 .intro {
     display: inline-block;
-    border: 3px ridge #0099ff;
+    border: 3px ridge var(--clr-setoff);
     border-radius: 6px;
     padding: 1vw;
     font-size: 1vw;
-    background-color: #00091f;
+    background-color: var(--clr-med-dark);
+    transform: rotate(0.1rad);
 }
 
 .intro * {
     border: none;
 }
 
-pre.sitename>code {
+pre.sitename {
     font-size: 1.4vw;
-    color: #ff9955;
+    color: var(--clr-spot);
     font-family: 'Courier New', Courier, monospace;
 }
 
-h1>pre.sitename>code {
+h1>pre.sitename {
     letter-spacing: 0.4vw;
     font-size: 2.4vw;
     font-weight: normal;
+}
+
+pre.skew {
+    transform: rotate(-0.13rad);
 }
