@@ -34,6 +34,10 @@ header, .intro {
     border: none;
 }
 
+.heading {
+    color: var(--clr-setoff);
+}
+
 pre.sitename {
     font-size: 1.4vw;
     color: var(--clr-spot);
