@@ -31,6 +31,7 @@ header, .intro {
     font-size: 1vw;
     background-color: var(--clr-medium-dark);
     transform: rotate(0.1rad);
+    animation: 1s ease-out alternate wobble;
 }
 
 .intro * {
@@ -105,21 +106,21 @@ pre.skew {
     width: 2px;
     height: 212px;
     background-color: #099;
-    animation: rotate-2pi 60s steps(60, end) infinite;
+    animation: 60s steps(60, end) infinite rotate-2pi;
 } 
 
 #minute-hand {
     width: 4px;
     height: 192px;
     background-color: #ff4463;
-    animation: rotate-2pi 3600s steps(120, end) infinite;
+    animation: 3600s steps(120, end) infinite rotate-2pi;
 }
 
 #hour-hand {
     width: 6px;
     height: 144px;
     background-color: #ffad69;
-    animation: rotate-2pi 43200s infinite;
+    animation: 43200s infinite rotate-2pi;
     transform: rotate(60deg); /* for debugging; remove for production!  */
 }
 
@@ -133,4 +134,18 @@ pre.skew {
     to {
       transform: rotate(540deg);
     }
-  }
+}
+
+@keyframes wobble {
+    0%, 100% {        
+        transform: rotate(0.1rad) translateX(0);
+        transform-origin: 50% 50%;
+    }
+
+    33% {
+        transform: translateX(-2px) rotate(0.08rad);
+    }
+    75% {
+        transform: translateX(2px) rotate(0.12rad);
+    }
+}
