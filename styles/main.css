@@ -3,7 +3,10 @@
     --clr-fg: #ffefcf;
     --clr-spot: #ff9955;
     --clr-setoff: #0099ff;
-    --clr-med-dark: #00091f;
+    --clr-medium-dark: #00091f;
+    --clr-medium-grey: #404040;
+    --clock-size: 20vw;
+    --hub-radius: 0.75vw;
 }
 
 body {
@@ -26,7 +29,7 @@ header, .intro {
     border-radius: 6px;
     padding: 1vw;
     font-size: 1vw;
-    background-color: var(--clr-med-dark);
+    background-color: var(--clr-medium-dark);
     transform: rotate(0.1rad);
 }
 
@@ -59,11 +62,15 @@ pre.skew {
     position: absolute;
     right: 6vw;
     bottom: 6vh;
-    border: 2px solid #000;
+    border: 6px ridge var(--clr-spot);
     border-radius: 50%;
-    width: 20vw;
-    height: 20vw;
+    width: var(--clock-size);
+    height: var(--clock-size);
     place-content: center;
+}
+
+.clock-face {
+    display: grid;
 }
 
 .clock-numeral {
@@ -73,12 +80,57 @@ pre.skew {
     color: var(--clr-setoff);
 }
 
-/* #h3 {
-    left: 216px;
-    top: 216px;
+#hub {
+    position: absolute;
+    width: calc(2 * var(--hub-radius));
+    height: calc(2 * var(--hub-radius));
+    background-color: var(--clr-medium-grey);
+    border-radius: 50%;
+    z-index: 512;    
+    left: calc(50% - var(--hub-radius));
+    top: calc(50% - var(--hub-radius));
 }
 
-#h9 {
-    left: -216px;
-    top: 216px;
-} */
+.hand {
+    position: absolute;
+    width: 5px;
+    transform-origin: top;
+    left: 50%;
+    top: 50%;
+    grid-row: 1;
+    grid-column: 1;
+}
+
+#second-hand {
+    width: 2px;
+    height: 212px;
+    background-color: #099;
+    animation: rotate-2pi 60s steps(60, end) infinite;
+} 
+
+#minute-hand {
+    width: 4px;
+    height: 192px;
+    background-color: #ff4463;
+    animation: rotate-2pi 3600s steps(120, end) infinite;
+}
+
+#hour-hand {
+    width: 6px;
+    height: 144px;
+    background-color: #ffad69;
+    animation: rotate-2pi 43200s infinite;
+    transform: rotate(60deg); /* for debugging; remove for production!  */
+}
+
+@keyframes rotate-2pi {
+    from {
+        /* As we shifted the hands so the top is at centre of clock container,
+           we need to rotate by pi to start at 12:00 
+           - but actually we'll need to set the start values in Javascript from the current datetime. */
+      transform: rotate(180deg);
+    }
+    to {
+      transform: rotate(540deg);
+    }
+  }

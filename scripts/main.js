@@ -7,7 +7,7 @@ window.addEventListener("DOMContentLoaded", _ => {
     numerals.forEach( n => {
         const phi = n.dataset.angle * Math.PI / 180.0;
         console.log(`r: ${r}, phi: ${phi}`);
-        n.style.left = `${6 + r * (1 + Math.cos(phi))}px`;
-        n.style.top = `${6 + r * (1 + Math.sin(phi))}px`;
+        n.style.left = `${r * (1 + Math.cos(phi))}px`;
+        n.style.top = `${r * (1 + Math.sin(phi))}px`;
     });
 });
