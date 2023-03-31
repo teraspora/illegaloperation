@@ -7,12 +7,14 @@
     --clr-medium-grey: #404040;
     --clock-size: 20vw;
     --hub-radius: 0.75vw;
+    --drift-duration: 6s;
 }
 
 body {
     background-image: url("../media/img_10552.png");
     color: var(--clr-fg);
     font-family: sans-serif;
+    animation: 120s infinite forwards ease-in-out background-flow;
 }
 
 main {
@@ -23,6 +25,10 @@ header, .intro {
     text-align: center;
 }
 
+header {
+    animation: 1s calc(var(--drift-duration) + 1s) ease-out alternate bulge;
+}
+
 .intro {
     display: inline-block;
     border: 3px ridge var(--clr-setoff);
@@ -30,8 +36,9 @@ header, .intro {
     padding: 1vw;
     font-size: 1vw;
     background-color: var(--clr-medium-dark);
+    box-shadow: 6px 6px 8px #005089;
     transform: rotate(0.1rad);
-    animation: 1s 12s ease-out alternate wobble;
+    animation: 1s var(--drift-duration) ease-out alternate wobble;
 }
 
 .intro * {
@@ -68,7 +75,7 @@ pre.skew {
     width: var(--clock-size);
     height: var(--clock-size);
     place-content: center;
-    animation: 12s 1 normal forwards drift-up;
+    animation: var(--drift-duration) 1 normal forwards drift-up;
     z-index: -1;
 }
 
@@ -159,3 +166,31 @@ pre.skew {
         transform: translate(-72vw, -27vw);
     }
 }
+
+
+
+@keyframes bulge {
+    0% {
+        transform: scale(1.00);
+    }
+    50% {
+        transform: scale(1.04);
+    }
+    100% {
+        transform: scale(1.00);
+    }
+}
+
+@keyframes background-flow {
+    50% {background-position: center;}
+
+    0% {
+        background-position: 0 0
+    }
+    50% {
+        background-position: 32768 32768
+    }
+    100% {
+        background-position: 65536 65536
+    }
+  }
