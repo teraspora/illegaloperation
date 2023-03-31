@@ -31,7 +31,7 @@ header, .intro {
     font-size: 1vw;
     background-color: var(--clr-medium-dark);
     transform: rotate(0.1rad);
-    animation: 1s ease-out alternate wobble;
+    animation: 1s 12s ease-out alternate wobble;
 }
 
 .intro * {
@@ -68,6 +68,8 @@ pre.skew {
     width: var(--clock-size);
     height: var(--clock-size);
     place-content: center;
+    animation: 12s 1 normal forwards drift-up;
+    z-index: -1;
 }
 
 .clock-face {
@@ -141,11 +143,19 @@ pre.skew {
         transform: rotate(0.1rad) translateX(0);
         transform-origin: 50% 50%;
     }
-
     33% {
         transform: translateX(-2px) rotate(0.08rad);
     }
     75% {
         transform: translateX(2px) rotate(0.12rad);
+    }
+}
+
+@keyframes drift-up {
+    0% {
+        transform: translate(0);
+    }
+    100% {
+        transform: translate(-72vw, -27vw);
     }
 }
