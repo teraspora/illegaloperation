@@ -1,13 +1,14 @@
 * {
     --clr-bg: #07000d;
     --clr-fg: #ffefcf;
-    --clr-spot: #ff9955;
-    --clr-setoff: #0099ff;
-    --clr-medium-dark: #00091f;
-    --clr-medium-grey: #404040;
+    --clr-spot: #ff4463;
+    --clr-setoff: #007e8d;
+    --clr-medium-dark: #121212;
+    --clr-medium-grey: #121212;
     --clock-size: 20vw;
     --hub-radius: 0.75vw;
     --drift-duration: 6s;
+    --highlight: #ff4463;
 }
 
 body {
@@ -26,6 +27,7 @@ header, .intro {
 }
 
 header {
+    text-shadow: 1px 1px #820016, 2px 2px #820016, 3px 3px #820016;
     animation: 1s calc(var(--drift-duration) + 1s) ease-out alternate bulge;
 }
 
@@ -36,7 +38,7 @@ header {
     padding: 1vw;
     font-size: 1vw;
     background-color: var(--clr-medium-dark);
-    box-shadow: 6px 6px 8px #005089;
+    box-shadow: 4px 4px 8px #820016;
     transform: rotate(0.1rad);
     animation: 1s var(--drift-duration) ease-out alternate wobble;
 }
@@ -72,6 +74,7 @@ pre.skew {
     bottom: 6vh;
     border: 6px ridge var(--clr-spot);
     border-radius: 50%;
+    box-shadow: 6px 6px 8px #483528;
     width: var(--clock-size);
     height: var(--clock-size);
     place-content: center;
@@ -94,7 +97,7 @@ pre.skew {
     position: absolute;
     width: calc(2 * var(--hub-radius));
     height: calc(2 * var(--hub-radius));
-    background-color: var(--clr-medium-grey);
+    background-color: var(--clr-setoff);
     border-radius: 50%;
     z-index: 512;    
     left: calc(50% - var(--hub-radius));
@@ -128,7 +131,7 @@ pre.skew {
 #hour-hand {
     width: 6px;
     height: 144px;
-    background-color: #ffad69;
+    background-color: var(--highlight);
     animation: 43200s infinite rotate-2pi;
     transform: rotate(60deg); /* for debugging; remove for production!  */
 }
