@@ -1,18 +1,20 @@
 * {
     --clr-bg: #07000d;
-    --clr-fg: #ffefcf;
+    --clr-fg: #00ffc0;
     --clr-spot: #ff4463;
-    --clr-setoff: #007e8d;
-    --clr-medium-dark: #121212;
+    --clr-setoff: #0076ff;
     --clr-medium-grey: #121212;
-    --clock-size: 20vw;
+    --clr-3: #00ffc0;
+    --clock-size: 16vw;
     --hub-radius: 0.75vw;
     --drift-duration: 6s;
-    --highlight: #ff4463;
+    --second: 1s;
+    --minute: 60s;
+    --hour: 3600s;
 }
 
 body {
-    background-image: url("../media/img_10552.png");
+    background-image: url("../media/img_10552_new-colours_00.png");
     color: var(--clr-fg);
     font-family: sans-serif;
     animation: 120s infinite forwards ease-in-out background-flow;
@@ -37,8 +39,8 @@ header {
     border-radius: 6px;
     padding: 1vw;
     font-size: 1vw;
-    background-color: var(--clr-medium-dark);
-    box-shadow: 4px 4px 8px #820016;
+    background-color: var(--clr-medium-grey);
+    box-shadow: 16px 16px 16px var(--clr-medium-grey);
     transform: rotate(0.1rad);
     animation: 1s var(--drift-duration) ease-out alternate wobble;
 }
@@ -48,7 +50,8 @@ header {
 }
 
 .heading {
-    color: var(--clr-setoff);
+    color: var(--clr-spot);
+    font-weight: normal;
 }
 
 pre.sitename {
@@ -61,6 +64,7 @@ h1>pre.sitename {
     letter-spacing: 0.4vw;
     font-size: 2.4vw;
     font-weight: normal;
+    color: var(--clr-3);
 }
 
 pre.skew {
@@ -74,7 +78,7 @@ pre.skew {
     bottom: 6vh;
     border: 6px ridge var(--clr-spot);
     border-radius: 50%;
-    box-shadow: 6px 6px 8px #483528;
+    box-shadow: 10px 10px 10px var(--clr-medium-grey);
     width: var(--clock-size);
     height: var(--clock-size);
     place-content: center;
@@ -84,6 +88,8 @@ pre.skew {
 
 .clock-face {
     display: grid;
+    justify-items: center;
+    align-items: end;
 }
 
 .clock-numeral {
@@ -107,33 +113,33 @@ pre.skew {
 .hand {
     position: absolute;
     width: 5px;
-    transform-origin: top;
-    left: 50%;
-    top: 50%;
+    transform-origin: bottom;
+    bottom: 50%;
     grid-row: 1;
     grid-column: 1;
 }
 
 #second-hand {
     width: 2px;
-    height: 212px;
-    background-color: #099;
+    height: calc(var(--clock-size) * 0.4);
+    background-color: var(--clr-3);
     animation: 60s steps(60, end) infinite rotate-2pi;
 } 
 
 #minute-hand {
     width: 4px;
-    height: 192px;
+    height: calc(var(--clock-size) * 0.39);
     background-color: #ff4463;
-    animation: 3600s steps(120, end) infinite rotate-2pi;
+    animation: 3600s --600s infinite linear rotate-2pi;
 }
 
 #hour-hand {
+    --hour: -21600s;
     width: 6px;
-    height: 144px;
-    background-color: var(--highlight);
-    animation: 43200s infinite rotate-2pi;
-    transform: rotate(60deg); /* for debugging; remove for production!  */
+    height: calc(var(--clock-size) * 0.3);
+    background-color: var(--clr-spot);
+    animation: 43200s -18000s infinite linear rotate-2pi; /* var(--hour)  */
+    /* transform: rotate(0deg); for debugging; remove for production!  */
 }
 
 @keyframes rotate-2pi {
@@ -141,10 +147,10 @@ pre.skew {
         /* As we shifted the hands so the top is at centre of clock container,
            we need to rotate by pi to start at 12:00 
            - but actually we'll need to set the start values in Javascript from the current datetime. */
-      transform: rotate(180deg);
+      transform: rotate(0deg);
     }
     to {
-      transform: rotate(540deg);
+      transform: rotate(360deg);
     }
 }
 
