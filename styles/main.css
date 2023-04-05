@@ -8,16 +8,13 @@
     --clock-size: 16vw;
     --hub-radius: 0.75vw;
     --drift-duration: 6s;
-    --second: 1s;
-    --minute: 60s;
-    --hour: 3600s;
 }
 
 body {
     background-image: url("../media/img_10552_new-colours_00.png");
     color: var(--clr-fg);
     font-family: sans-serif;
-    animation: 120s infinite forwards ease-in-out background-flow;
+    animation: 120s infinite forwards ease-out background-flow;
 }
 
 main {
@@ -29,7 +26,8 @@ header, .intro {
 }
 
 header {
-    text-shadow: 1px 1px #820016, 2px 2px #820016, 3px 3px #820016;
+    --clr-shadow: var(--clr-medium-grey);
+    text-shadow: 6px 6px var(--clr-shadow), 6px 6px var(--clr-shadow), 6px 6px var(--clr-shadow);
     animation: 1s calc(var(--drift-duration) + 1s) ease-out alternate bulge;
 }
 
@@ -82,7 +80,7 @@ pre.skew {
     width: var(--clock-size);
     height: var(--clock-size);
     place-content: center;
-    animation: var(--drift-duration) 1 normal forwards drift-up;
+    animation: var(--drift-duration) 2s 1 ease forwards drift-up;
     z-index: -1;
 }
 
@@ -123,23 +121,21 @@ pre.skew {
     width: 2px;
     height: calc(var(--clock-size) * 0.4);
     background-color: var(--clr-3);
-    animation: 60s steps(60, end) infinite rotate-2pi;
+    animation: 60s var(--delay) steps(60, end) infinite rotate-2pi;
 } 
 
 #minute-hand {
     width: 4px;
     height: calc(var(--clock-size) * 0.39);
     background-color: #ff4463;
-    animation: 3600s --600s infinite linear rotate-2pi;
+    animation: 3600s var(--delay) infinite linear rotate-2pi;
 }
 
 #hour-hand {
-    --hour: -21600s;
     width: 6px;
     height: calc(var(--clock-size) * 0.3);
     background-color: var(--clr-spot);
-    animation: 43200s -18000s infinite linear rotate-2pi; /* var(--hour)  */
-    /* transform: rotate(0deg); for debugging; remove for production!  */
+    animation: 43200s var(--delay) infinite linear rotate-2pi;
 }
 
 @keyframes rotate-2pi {
