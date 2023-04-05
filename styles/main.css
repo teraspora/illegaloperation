@@ -95,7 +95,7 @@ pre.skew {
 .clock-numeral {
     position: absolute;
     font-family: 'Courier New', Courier, monospace;
-    font-size: 0.8vw;
+    font-size: 0.6vw;
     color: var(--clr-fg);
 }
 
