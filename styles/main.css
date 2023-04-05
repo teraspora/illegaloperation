@@ -1,13 +1,18 @@
+/*
+
+Illegal Operation - A website by John Lynch - April 2023
+Main CSS file
+*/
+
 * {
-    --clr-bg: #07000d;
     --clr-fg: #00ffc0;
     --clr-spot: #ff4463;
     --clr-setoff: #0076ff;
     --clr-medium-grey: #121212;
-    --clr-3: #00ffc0;
     --clock-size: 16vw;
     --hub-radius: 0.75vw;
     --drift-duration: 6s;
+    --drift-delay: 2s;
 }
 
 body {
@@ -17,18 +22,14 @@ body {
     animation: 120s infinite forwards ease-out background-flow;
 }
 
-main {
-    text-align: center;
-}
-
-header, .intro {
+main, header, .intro {
     text-align: center;
 }
 
 header {
     --clr-shadow: var(--clr-medium-grey);
     text-shadow: 6px 6px var(--clr-shadow), 6px 6px var(--clr-shadow), 6px 6px var(--clr-shadow);
-    animation: 1s calc(var(--drift-duration) + 1s) ease-out alternate bulge;
+    animation: 2s calc(var(--drift-duration) + 1s) ease-out alternate bulge;
 }
 
 .intro {
@@ -40,7 +41,7 @@ header {
     background-color: var(--clr-medium-grey);
     box-shadow: 16px 16px 16px var(--clr-medium-grey);
     transform: rotate(0.1rad);
-    animation: 1s var(--drift-duration) ease-out alternate wobble;
+    animation: 1s calc(var(--drift-duration) + var(--drift-delay)) ease-out alternate wobble;
 }
 
 .intro * {
@@ -62,7 +63,7 @@ h1>pre.sitename {
     letter-spacing: 0.4vw;
     font-size: 2.4vw;
     font-weight: normal;
-    color: var(--clr-3);
+    color: var(--clr-fg);
 }
 
 pre.skew {
@@ -80,7 +81,7 @@ pre.skew {
     width: var(--clock-size);
     height: var(--clock-size);
     place-content: center;
-    animation: var(--drift-duration) 2s 1 ease forwards drift-up;
+    animation: var(--drift-duration) var(--drift-delay) 1 ease forwards drift-up;
     z-index: -1;
 }
 
@@ -120,7 +121,7 @@ pre.skew {
 #second-hand {
     width: 2px;
     height: calc(var(--clock-size) * 0.4);
-    background-color: var(--clr-3);
+    background-color: var(--clr-fg);
     animation: 60s var(--delay) steps(60, end) infinite rotate-2pi;
 } 
 
@@ -140,9 +141,6 @@ pre.skew {
 
 @keyframes rotate-2pi {
     from {
-        /* As we shifted the hands so the top is at centre of clock container,
-           we need to rotate by pi to start at 12:00 
-           - but actually we'll need to set the start values in Javascript from the current datetime. */
       transform: rotate(0deg);
     }
     to {
@@ -152,8 +150,8 @@ pre.skew {
 
 @keyframes wobble {
     0%, 100% {        
-        transform: rotate(0.1rad) translateX(0);
         transform-origin: 50% 50%;
+        transform: translateX(0) rotate(0.1rad);
     }
     33% {
         transform: translateX(-2px) rotate(0.08rad);
@@ -176,13 +174,13 @@ pre.skew {
 
 @keyframes bulge {
     0% {
-        transform: scale(1.00);
+        transform: scale(1.00) rotate(0.02rad);
     }
     50% {
-        transform: scale(1.04);
+        transform: scale(1.04) rotate(0.06rad);
     }
     100% {
-        transform: scale(1.00);
+        transform: scale(1.00) rotate(0.1rad);
     }
 }
 
