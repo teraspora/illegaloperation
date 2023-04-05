@@ -124,18 +124,20 @@ pre.skew {
     bottom: 50%;
     grid-row: 1;
     grid-column: 1;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
 }
 
 #second-hand {
     width: 2px;
-    height: calc(var(--clock-size) * 0.4);
+    height: calc(var(--clock-size) * 0.39);
     background-color: var(--clr-setoff);
     animation: 60s var(--delay) steps(60, end) infinite rotate-2pi;
 } 
 
 #minute-hand {
     width: 4px;
-    height: calc(var(--clock-size) * 0.39);
+    height: calc(var(--clock-size) * 0.37);
     background-color: #ff4463;
     animation: 3600s var(--delay) infinite linear rotate-2pi;
 }
