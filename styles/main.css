@@ -99,6 +99,13 @@ pre.skew {
     color: var(--clr-fg);
 }
 
+.minutes-numeral {
+    position: absolute;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.4vw;
+    color: var(--clr-setoff);
+}
+
 #hub {
     position: absolute;
     width: calc(2 * var(--hub-radius));
