@@ -29,7 +29,8 @@ main, header, .intro {
 header {
     --clr-shadow: var(--clr-medium-grey);
     text-shadow: 6px 6px var(--clr-shadow), 6px 6px var(--clr-shadow), 6px 6px var(--clr-shadow);
-    animation: 2s calc(var(--drift-duration) + 1s) ease-out alternate bulge;
+    transform: rotate(-0.06rad);
+    animation: 1s calc(var(--drift-duration) + 1s) ease-in-out alternate bulge;
 }
 
 .intro {
@@ -94,8 +95,8 @@ pre.skew {
 .clock-numeral {
     position: absolute;
     font-family: 'Courier New', Courier, monospace;
-    font-size: 1.2vw;
-    color: var(--clr-setoff);
+    font-size: 0.8vw;
+    color: var(--clr-fg);
 }
 
 #hub {
@@ -121,7 +122,7 @@ pre.skew {
 #second-hand {
     width: 2px;
     height: calc(var(--clock-size) * 0.4);
-    background-color: var(--clr-fg);
+    background-color: var(--clr-setoff);
     animation: 60s var(--delay) steps(60, end) infinite rotate-2pi;
 } 
 
@@ -136,7 +137,7 @@ pre.skew {
     width: 6px;
     height: calc(var(--clock-size) * 0.3);
     background-color: var(--clr-spot);
-    animation: 43200s var(--delay) infinite linear rotate-2pi;
+    animation: 86400s var(--delay) infinite linear rotate-2pi;
 }
 
 @keyframes rotate-2pi {
@@ -149,7 +150,7 @@ pre.skew {
 }
 
 @keyframes wobble {
-    0%, 100% {        
+    0%, 100% {
         transform-origin: 50% 50%;
         transform: translateX(0) rotate(0.1rad);
     }
@@ -173,14 +174,15 @@ pre.skew {
 
 
 @keyframes bulge {
-    0% {
-        transform: scale(1.00) rotate(0.02rad);
+    0% {     
+        transform-origin: 50% 50%;
+        transform: scale(1.00) rotate(-0.06rad);
     }
     50% {
-        transform: scale(1.04) rotate(0.06rad);
+        transform: scale(1.04) rotate(0rad);
     }
     100% {
-        transform: scale(1.00) rotate(0.1rad);
+        transform: scale(1.00) rotate(-0.06rad);
     }
 }
 
