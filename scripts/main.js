@@ -47,7 +47,9 @@ window.addEventListener("DOMContentLoaded", _ => {
         id('hour-hand').style.setProperty('--delay', `${hour_delay}s`);
     }
 
-    window.addEventListener("resize", position_numerals);    
+    window.addEventListener("resize", position_numerals);
+    const tw_rotate_clock = gsap.to(clock, {rotation: 180, backgroundColor: '#fda', duration: 2, paused: true});
+    clock.addEventListener('mouseenter', _ => tw_rotate_clock.play());
 });
 
            

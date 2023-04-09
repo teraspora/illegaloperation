@@ -7,12 +7,13 @@ Main CSS file
 * {
     --clr-fg: #00ffc0;
     --clr-spot: #ff4463;
+    --clr-spot-bright: #fa0029;
     --clr-setoff: #0076ff;
     --clr-medium-grey: #121212;
     --clock-size: 16vw;
     --hub-radius: 0.75vw;
     --drift-duration: 6s;
-    --drift-delay: 2s;
+    --drift-delay: 0s;
 }
 
 body {
@@ -27,6 +28,7 @@ main, header, .intro {
 }
 
 header {
+    will-change: transform;
     --clr-shadow: var(--clr-medium-grey);
     text-shadow: 6px 6px var(--clr-shadow), 6px 6px var(--clr-shadow), 6px 6px var(--clr-shadow);
     transform: rotate(-0.06rad);
@@ -34,6 +36,7 @@ header {
 }
 
 .intro {
+    will-change: transform;
     display: inline-block;
     border: 3px ridge var(--clr-setoff);
     border-radius: 6px;
@@ -72,6 +75,7 @@ pre.skew {
 }
 
 .clock {
+    will-change: transform, opacity;
     background-color: #121212;
     position: absolute;
     right: 6vw;
@@ -82,14 +86,17 @@ pre.skew {
     width: var(--clock-size);
     height: var(--clock-size);
     place-content: center;
-    animation: var(--drift-duration) var(--drift-delay) 1 ease forwards drift-up;
+    opacity: 0.2;
+    animation: var(--drift-duration) var(--drift-delay) 1 ease-out forwards drift-up;
     z-index: -1;
+    transform-origin: center center;
 }
 
 .clock-face {
     display: grid;
     justify-items: center;
     align-items: end;
+    transform-origin: center center;
 }
 
 .clock-numeral {
@@ -102,7 +109,7 @@ pre.skew {
 .minutes-numeral {
     position: absolute;
     font-family: 'Courier New', Courier, monospace;
-    font-size: 0.4vw;
+    font-size: 0.5vw;
     color: var(--clr-setoff);
 }
 
@@ -118,6 +125,7 @@ pre.skew {
 }
 
 .hand {
+    will-change: transform;
     position: absolute;
     width: 5px;
     transform-origin: bottom;
@@ -173,10 +181,12 @@ pre.skew {
 
 @keyframes drift-up {
     0% {
-        transform: translate(0);
+        transform: translate(0) rotateZ(180deg) rotateX(0deg) scale(0);
+        opacity: 0.2;
     }
     100% {
-        transform: translate(-72vw, -27vw);
+        transform: translate(-72vw, -27vw) rotateZ(360deg) rotateX(1440deg) scale(1);
+        opacity: 1;
     }
 }
 
