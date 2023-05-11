@@ -39,6 +39,9 @@ window.addEventListener("DOMContentLoaded", _ => {
 
     function set_time() {
         const now = new Date();
+        // Note: negative delay means no delay in starting - instead,
+        // start the animation immediately from the point it would reach
+        // at <start time> + <delay>, rather than from <start time> (the beginning).
         const sec_delay = -now.getSeconds();
         const min_delay = -now.getMinutes() * 60 + sec_delay;
         const hour_delay = -now.getHours() * 3600 + min_delay;
